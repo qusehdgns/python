@@ -195,4 +195,111 @@ Quiz) 당신은 최근에 코딩 스터디 모임을 새로 만들었습니다.
 # print("뒤 7자리 : " + jumin[7:]) # 7 부터 끝까지
 # print("뒤 7자리 (뒤에부터) : " + jumin[-7:]) # 맨뒤에서 7번째부터 끝까지
 
-# 문자열 처리 함수
+# # 문자열 처리 함수
+# python = "Python is Amazing"
+# print(python.lower()) # 소문자
+# print(python.upper()) # 대문자
+# print(python[0].isupper()) # 대문자 확인
+# print(len(python)) # 길이 반환
+# print(python.replace("Python", "Java")) # 문자열 변환
+
+# index = python.index("n") # 특정 문자열 인덱스
+# print(index)
+# index = python.index("n", index + 1) # 두번째 n 탐색
+# print(index)
+
+# print(python.find("Java")) # 문자열 없을 시 -1 반환
+# # print(python.index("Java")) # 문자열 없을 시 에러 발생
+
+# print(python.count("n")) # 특정 문자열 몇 개 인지 카운트
+
+# # 문자열 포맷
+# # print("a" + "b")
+# # print("a", "b")
+
+# # 방법 1
+# print("나는 %d살입니다." % 20) # 정수
+# print("나는 %s을 좋아해요" % "파이썬") # 문자열
+# print("Apple은 %c로 시작해요." % "A") # 문자
+
+# print("나는 %s살입니다." % 20) # 정수형 문자열로도 가능
+# print("나는 %s색과 %s색을 좋아해요." % ("파란", "빨간")) # 2개 동시
+
+# # 방법 2
+# print("나는 {}살입니다".format(20))
+# print("나는 {}색과 {}색을 좋아해요.".format("파란", "빨간"))
+# print("나는 {0}색과 {1}색을 좋아해요.".format("파란", "빨간")) # 순서를 지정 출력
+# print("나는 {1}색과 {0}색을 좋아해요.".format("파란", "빨간"))
+
+# # 방법 3
+# print("나는 {age}살이며, {color}색을 좋아해요.".format(age = 20, color = "빨간")) # format 내부 변수를 선언하여 사용 가능
+# print("나는 {age}살이며, {color}색을 좋아해요.".format(color = "빨간", age = 20))
+
+# # 방법 4
+# age = 20
+# color = "빨간"
+# print(f"나는 {age}살이며, {color}색을 좋아해요.") # 실제 변수로 사용 가능
+
+# # 탈출 문자
+# print("백문이 불여일견\n백견이 불여일타") # 줄바꿈
+
+# print("저는 \"변동훈\"입니다.") # 따옴표
+# print('저는 "변동훈"입니다.')
+# print("저는 \'변동훈\'입니다.")
+
+# print("C:\\Users\\qusehdgns\\Desktop>") # 역슬래쉬
+
+# print("Red Apple\rPind") # 커서 맨앞으로 이동
+
+# print("Redd\bApple") # 한글자 앞으로 이동
+
+# print("Red\tApple") # 탭
+
+'''
+Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하시오
+
+예) http://naver.com
+규칙1 : http:// 부분은 제외 => naver.com
+규칙2 : 처음 만나는 점(.) 이후 부분은 제외 => naver
+규칙3 : 남은 글자 중 처음 세자리 + 글자 갯수 + 글자 내 'e' 갯수 + "!" 로 구성
+                    (nav)               (5)         (1)                 (!)
+예) 생성된 비밀번호 : nav51!
+'''
+# # url = "http://naver.com"
+# url = "http://youtube.com"
+# my_str = url.replace("http://", "") # 규칙1
+# my_str = my_str[:my_str.index(".")] # 규칙2
+
+# password = my_str[:3] + str(len(my_str)) + str(my_str.count("e")) + "!"
+# print("{0}의 비밀번호는 {1} 입니다".format(url, password))
+
+# 리스트 []
+
+# # 지하철 칸별로 10명, 20명, 30명
+# subway1 = 10
+# subway2 = 20
+# subway3 = 30
+
+# subway = [10, 20, 30]
+# print(subway)
+
+# subway = ["유재석", "조세호", "박명수"]
+# print(subway)
+
+# print(subway.index("조세호"))
+
+# subway.append("하하")
+# print(subway)
+
+# subway.insert(1, "정형돈")
+# print(subway)
+
+# print(subway.pop())
+# print(subway)
+
+# # print(subway.pop())
+# # print(subway)
+
+# # print(subway.pop())
+# # print(subway)
+ß
