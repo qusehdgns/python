@@ -273,7 +273,7 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 # password = my_str[:3] + str(len(my_str)) + str(my_str.count("e")) + "!"
 # print("{0}의 비밀번호는 {1} 입니다".format(url, password))
 
-# 리스트 []
+# # 리스트 []
 
 # # 지하철 칸별로 10명, 20명, 30명
 # subway1 = 10
@@ -302,4 +302,115 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 
 # # print(subway.pop())
 # # print(subway)
-ß
+
+# subway.append("유재석")
+# print(subway)
+# print(subway.count("유재석"))
+
+# # 정렬
+# num_list = [5,2,4,3,1]
+# num_list.sort()
+# print(num_list)
+
+# # 뒤집기
+# num_list.reverse()
+# print(num_list)
+
+# # 모두 지우기
+# num_list.clear()
+# print(num_list)
+
+# # 다양한 자료형 함께 사용
+# num_list = [5,2,4,3,1]
+# mix_list = ["조세호", 20, True]
+# # print(mix_list)
+
+# # 리스트 확장
+# num_list.extend(mix_list)
+# print(num_list)
+
+# 딕셔너리
+
+# cabinet = {3: "유재석", 100: "김태호"}
+# print(cabinet[3])
+# print(cabinet[100])
+
+# print(cabinet.get(3))
+# print(cabinet.get(100))
+
+# print(cabinet[5]) # 값 없을 시 에러 발생 후 종료
+# print(cabinet.get(5, "사용 가능")) # 값 없을 시 None 출력 및 default 값 설정
+# print("hi")
+
+# print(3 in cabinet) # True
+# print(5 in cabinet) # False
+
+# cabinet = {"A-3" : "유재석", "B-100" : "김태호"}
+# print(cabinet["A-3"])
+# print(cabinet["B-100"])
+
+# print(cabinet)
+# cabinet["A-3"] = "김종국"
+# cabinet["C-20"] = "조세호"
+# print(cabinet)
+
+# del cabinet["A-3"]
+# print(cabinet)
+
+# # key 들만 출력
+# print(cabinet.keys())
+
+# # value 들만 출력
+# print(cabinet.values())
+
+# # key, value 쌍으로 출력
+# print(cabinet.items())
+
+# cabinet.clear()
+# print(cabinet)
+
+# 튜플 - 리스트와 유사하지만 변경할 수 없고 빠름
+
+# menu = ("돈까스", "치즈까스")
+# print(menu[0])
+# print(menu[1])
+
+# 추가 불가
+# menu.add("생선까스")
+
+# name = "김종국"
+# age = 20
+# hobby = "코딩"
+# print(name, age, hobby)
+
+# (name, age, hobby) = ("김종국", 20, "코딩")
+# print(name, age, hobby)
+
+# 집합(set)
+# 중복 안됨, 순서 없음
+# my_set = {1,2,3,3,3}
+# print(my_set)
+
+# java = {"유재석", "조세호", "양세형"}
+# python = set(["유재석", "박명수"])
+
+# # 교집합 출력
+# print(java & python)
+# print(java.intersection(python))
+
+# # 합집합 출력
+# print(java | python)
+# print(java.union(python))
+
+# # 차집합 출력
+# print(java - python)
+# print(java.difference(python))
+
+# # 추가
+# python.add("김태호")
+# print(python)
+
+# # 삭제
+# java.remove("김태호")
+# print(java)
+
