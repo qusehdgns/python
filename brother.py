@@ -210,22 +210,45 @@
 
 # print(len(string))
 
-n = int(input())
+# n = int(input())
 
-strings = [input() for _ in range(n)]
-result = []
+# strings = [input() for _ in range(n)]
+# result = []
 
-for string in strings:
-    if len(string) > 1:
-        check = True
-        for i in range(len(string)-1):
-            if string[i] != string[i+1] and string[i] in string[i+1:]:
-                check = False
-                break
+# for string in strings:
+#     if len(string) > 1:
+#         check = True
+#         for i in range(len(string)-1):
+#             if string[i] != string[i+1] and string[i] in string[i+1:]:
+#                 check = False
+#                 break
         
-        if check:
-            result.append(string)
-    else:
-        result.append(string)
+#         if check:
+#             result.append(string)
+#     else:
+#         result.append(string)
 
-print(len(result))
+# print(len(result))
+
+# a = range(10)
+
+# print(list(a))
+
+# arr = ['1', '2', '3']
+
+# print(str(eval('*'.join(arr))))
+
+result = list(range(1,10001))
+
+def solve(num):
+    global result
+    num = num+sum([int(i) for i in str(num)])
+    if num<=10000 and num in result:
+        result.remove(num)
+        return solve(num)
+    else:
+        return 0
+
+for i in result:
+    solve(i)
+    print(i)
