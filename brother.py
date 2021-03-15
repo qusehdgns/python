@@ -238,17 +238,32 @@
 
 # print(str(eval('*'.join(arr))))
 
-result = list(range(1,10001))
+# result = list(range(1,10001))
 
-def solve(num):
-    global result
-    num = num+sum([int(i) for i in str(num)])
-    if num<=10000 and num in result:
-        result.remove(num)
-        return solve(num)
-    else:
-        return 0
+# def solve(num):
+#     global result
+#     num = num+sum([int(i) for i in str(num)])
+#     if num<=10000 and num in result:
+#         result.remove(num)
+#         return solve(num)
+#     else:
+#         return 0
 
-for i in result:
-    solve(i)
-    print(i)
+# for i in result:
+#     solve(i)
+#     print(i)
+
+# S = input()
+# [print(S.find(chr(i)), end=' ') for i in range(ord('a'), ord('z')+1, 1)]
+
+
+# for j in range(5):
+#     print(j)
+#     if j == 3:
+#         pass
+# else:
+#     print("else", j)
+
+string = ".....TWwde%@#!$"
+
+print(string.lower())
