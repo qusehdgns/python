@@ -264,6 +264,42 @@
 # else:
 #     print("else", j)
 
-string = ".....TWwde%@#!$"
+# string = ".....TWwde%@#!$"
 
-print(string.lower())
+# print(string.lower())
+
+def calc(num):
+
+    num_check = num
+
+    count = 0
+    result = []
+
+    for i in range(1,num+1):
+        
+        if num_check - i <= 0:
+            count = i
+            break
+        
+        num_check -= i
+        
+
+    print(count)
+    if count % 2 == 0:
+        result = [1, count]
+        for _ in range(1, num_check):
+            result[0] += 1
+            result[1] -= 1
+    else:
+        result = [count, 1]
+        for _ in range(1, num_check):
+            result[1] += 1
+            result[0] -= 1
+
+    return result
+
+num = int(input())
+
+result = calc(num)
+
+print(f"{result[0]}/{result[1]}")
