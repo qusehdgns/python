@@ -414,3 +414,29 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 # java.remove("김태호")
 # print(java)
 
+# def test(*a, b = 3):
+#     for temp in a:
+#         print(f"a:{temp}", end=" ")
+#     else:
+#         print()
+#     print(f"b:{temp}")
+
+# test(*a=1,*a=2,*a=3,*a=4,*a=5,b=5)
+# test(1)
+
+# def test(*a):
+#     return type(a)
+
+# print(test(1,2,3,4))
+
+# a = 10
+
+# for _ in range(1):
+#     a = 8
+
+# print(a)
+
+# a = { 1, 2, 3}
+
+# print(type(a))
+
