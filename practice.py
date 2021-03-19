@@ -440,3 +440,92 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 
 # print(type(a))
 
+# A, B, C = map(int, input().split())
+
+# if B >= C:
+#     print(-1)
+# else:
+#     # i = 0
+#     # while i * C <= A + (B * i):
+#     #     i += 1
+
+#     i = A // (C - B) + 1
+#     print(i)
+
+# num = int(input())
+
+# i = 0
+# j = 1
+
+# while num > 1:
+#     if i < (num-1) / 6 <= i + j:
+#         j += 1
+#         break
+
+#     i = i + j
+#     j += 1
+
+# print(j)
+
+# import math
+
+# A, B, V = map(int, input().split())
+
+# i = math.ceil((V-B) / (A - B))
+
+# print(i)
+
+# T = int(input())
+
+# rooms = []
+
+# for _ in range(T):
+#     H, W, N = map(int, input().split())
+#     room = N // H + 1
+
+#     if N % H == 0:
+#         room -= 1
+#         floor = H
+#     else:
+#         floor = N % H
+
+#     rooms.append((floor * 100) + room)
+
+# for temp in rooms:
+#     print(temp)
+
+
+
+# weight = int(input())
+
+# result = 0
+
+# while weight >= 0:
+#     if weight % 5 == 0:
+#         result += (weight//5)
+#         print(result)
+#         break
+
+#     weight -= 3
+#     result += 1
+# else:
+#     print(-1)
+
+# A, B = map(int, input().split())
+# print(A+B)
+
+T = int(input())
+
+for _ in range(T):
+    X, Y = map(int, input().split())
+
+    length = Y - X
+
+    move = []
+    i = 0
+    while length - i - sum(move) > 0:
+        i += 1
+        move.append(i)
+        length -= i
+
+    print(move, i, length)
