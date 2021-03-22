@@ -268,38 +268,205 @@
 
 # print(string.lower())
 
-def calc(num):
+# def calc(num):
 
-    num_check = num
+#     num_check = num
 
-    count = 0
-    result = []
+#     count = 0
+#     result = []
 
-    for i in range(1,num+1):
+#     for i in range(1,num+1):
         
-        if num_check - i <= 0:
-            count = i
-            break
+#         if num_check - i <= 0:
+#             count = i
+#             break
         
-        num_check -= i
+#         num_check -= i
         
 
-    print(count)
-    if count % 2 == 0:
-        result = [1, count]
-        for _ in range(1, num_check):
-            result[0] += 1
-            result[1] -= 1
-    else:
-        result = [count, 1]
-        for _ in range(1, num_check):
-            result[1] += 1
-            result[0] -= 1
+#     print(count)
+#     if count % 2 == 0:
+#         result = [1, count]
+#         for _ in range(1, num_check):
+#             result[0] += 1
+#             result[1] -= 1
+#     else:
+#         result = [count, 1]
+#         for _ in range(1, num_check):
+#             result[1] += 1
+#             result[0] -= 1
 
-    return result
+#     return result
 
-num = int(input())
+# num = int(input())
 
-result = calc(num)
+# result = calc(num)
 
-print(f"{result[0]}/{result[1]}")
+# print(f"{result[0]}/{result[1]}")
+
+# N = int(input())
+# case = list(map(int,input().split()))
+# result = 0
+
+# for temp in case[:N]:
+#     if temp > 1:
+#         check = True
+#         for i in range(2, temp):
+#             if temp % i == 0:
+#                 check = False
+#                 break
+        
+#         if check:
+#             result += 1
+
+# print(result)
+
+# M = int(input())
+# N = int(input())
+
+# result = []
+
+# for temp in range(M, N+1):
+#     if temp > 1:
+#         check = True
+#         for i in range(2, temp):
+#             if temp % i == 0:
+#                 check = False
+#                 break
+        
+#         if check:
+#             result.append(temp)
+
+# if len(result) > 0:
+#     print(sum(result))
+#     print(result[0])
+# else:
+#     print(-1)
+
+# N = int(input())
+
+# while N != 1:
+#     for i in range(2, N+1):
+#         if N % i == 0:
+#             print(i)
+#             N //= i
+#             break
+
+# M, N = map(int, input().split())
+
+# result = list(range(M, N+1))
+
+# if 1 in result:
+#     result.remove(1)
+
+# for temp in range(2, result[-1]):
+#     i = 2
+#     j = temp
+#     while i * j <= N:
+#         if (i * j) in result:
+#             result.remove(i * j)
+        
+#         i += 1
+
+# for temp in result:
+#     check = True
+#     for i in range(2, temp):
+#         if temp % i == 0:
+#             check = False
+#             break
+#     if check:
+#         print(temp)
+
+# while True:
+#     n = int(input())
+
+#     if n == 0:
+#         break
+
+#     count = 0
+#     for temp in range(n+1, (2*n)+1):
+#         if temp > 1:
+#             check = True
+#             for i in range(2, temp):
+#                 if temp % i == 0:
+#                     check = False
+#                     break
+            
+#             if check:
+#                 count += 1
+
+#     print(count)
+
+# x, y, w, h = map(int, input().split())
+
+# result = [x, y, w-x, h-y]
+
+# print(min(result))
+
+# xs = []
+# ys = []
+
+# for _ in range(3):
+#     x, y = map(int, input().split())
+#     if x in xs:
+#         xs.remove(x)
+#     else:
+#         xs.append(x)
+    
+#     if y in ys:
+#         ys.remove(y)
+#     else:
+#         ys.append(y)
+
+# print(xs[0], ys[0])
+
+# while True:
+#     temp = list(map(int, input().split()))
+
+#     temp.sort()
+
+#     if temp.count(0) == 3:
+#         break
+
+#     if (temp[0]**2) + (temp[1]**2) == (temp[-1]**2):
+#         print("right")
+#     else:
+#         print("wrong")
+
+# T = int(input())
+
+# for _ in range(T):
+#     x1, y1, r1, x2, y2, r2 = map(int, input().split())
+
+#     r = (((x1 - x2) ** 2) + ((y1 - y2) ** 2)) ** (1 / 2)
+
+#     if r == 0 and r1 == r2:
+#         print(-1)
+#     elif r1 + r2 == r or r2 + r == r1 or r1 + r == r2:
+#         print(1)
+#     elif r1 + r2 < r or r2 + r < r1 or r1 + r < r2:
+#         print(0)
+#     else:
+#         print(2)
+
+# import math
+
+# r = int(input())
+
+# print("{:.6f}".format((r ** 2) * math.pi))
+# print("{:.6f}".format((r ** 2) * 2))
+
+m, n = map(int,input().split())
+
+for i in range(m, n+1):
+    if i > 1:
+        check = True
+        j = 2
+        while j * j <= i:
+            if i % j == 0:
+                check = False
+                break
+            i += 1
+        
+        if check:
+            print(i)
