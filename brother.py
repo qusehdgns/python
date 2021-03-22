@@ -456,17 +456,83 @@
 # print("{:.6f}".format((r ** 2) * math.pi))
 # print("{:.6f}".format((r ** 2) * 2))
 
-m, n = map(int,input().split())
+# m, n = map(int,input().split())
 
-for i in range(m, n+1):
-    if i > 1:
-        check = True
-        j = 2
-        while j * j <= i:
-            if i % j == 0:
-                check = False
-                break
-            i += 1
+# for i in range(m, n+1):
+#     if i > 1:
+#         check = True
+#         j = 2
+#         while j * j <= i:
+#             if i % j == 0:
+#                 check = False
+#                 break
+#             i += 1
         
-        if check:
-            print(i)
+#         if check:
+#             print(i)
+
+# def solution(n, arr1, arr2):
+#     cal = [2 ** i for i in range(n)][::-1]
+    
+#     map1 = []
+#     map2 = []
+    
+#     for temp in arr1:
+#         temp_list = []
+#         for i in range(len(cal)):
+#             if temp >= cal[i]:
+#                 temp -= cal[i]
+#                 temp_list.append(1)
+#             else:
+#                 temp_list.append(0)
+#         map1.append(temp_list)
+        
+#     for temp in arr2:
+#         temp_list = []
+#         for i in range(len(cal)):
+#             if temp >= cal[i]:
+#                 temp -= cal[i]
+#                 temp_list.append(1)
+#             else:
+#                 temp_list.append(0)
+#         map2.append(temp_list)
+        
+#     map = [[0] * n for _ in range(n)]
+        
+#     for i in range(len(map)):
+#         for j in range(len(map[0])):
+#             if map1[i][j] == 1 or map2[i][j] == 1:
+#                 map[i][j] = '#'
+#             else:
+#                 map[i][j] = ' '
+                
+#         map[i] = ''.join(map[i])
+
+#     return map
+
+
+# print(solution(5, [9,20,28,18,11], [30,1,21,17,28]))
+
+# def solution(scoville, K):
+#     count = 0
+    
+#     while min(scoville) < K:
+#         count += 1
+#         first = scoville.pop(0)
+#         second = scoville.pop(0)
+    
+#         if first + (second * 2) >= K:
+#             scoville.append(first + (second * 2))
+#         else:
+#             for i in range(len(scoville)):
+#                 if first + (second * 2) < scoville[i]:
+#                     scoville.insert(i, first + (second * 2))
+        
+#     return count
+
+# print(solution([1,2,3,9,10,12], 7))
+
+test = "--2-342afAFADFADF"
+test.lower()
+
+print(test.lower())
