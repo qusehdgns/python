@@ -514,18 +514,37 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 # A, B = map(int, input().split())
 # print(A+B)
 
+# T = int(input())
+
+# for _ in range(T):
+#     X, Y = map(int, input().split())
+
+#     length = Y - X
+
+#     move = []
+#     i = 0
+#     while length - i - sum(move) > 0:
+#         i += 1
+#         move.append(i)
+#         length -= i
+
+#     print(move, i, length)
+
 T = int(input())
 
+result = []
+
 for _ in range(T):
-    X, Y = map(int, input().split())
+    y = int(input()) + 1
+    x = int(input()) - 1
 
-    length = Y - X
+    first = [1 for _ in range(x + 1)]
 
-    move = []
-    i = 0
-    while length - i - sum(move) > 0:
-        i += 1
-        move.append(i)
-        length -= i
+    for _ in range(y-1):
+        second = [sum(first[:i]) for i in range(1, len(first)+1)]
+        first = second
+    
+    result.append(sum(first[:x+1]))
 
-    print(move, i, length)
+for temp in result:
+    print(temp)
