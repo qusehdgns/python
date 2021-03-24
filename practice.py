@@ -530,21 +530,97 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 
 #     print(move, i, length)
 
+# T = int(input())
+
+# result = []
+
+# for _ in range(T):
+#     y = int(input()) + 1
+#     x = int(input()) - 1
+
+#     first = [1 for _ in range(x + 1)]
+
+#     for _ in range(y-1):
+#         second = [sum(first[:i]) for i in range(1, len(first)+1)]
+#         first = second
+    
+#     result.append(sum(first[:x+1]))
+
+# for temp in result:
+#     print(temp)
+
+# def make_roop(i, total_length):
+#     half = total_length / 2
+
+#     length = []
+#     while sum(length) + i < half:
+#         length.append(i)
+#         i += 1
+
+#     if len(length) == 0:
+
+
+#     distance = total_length - (sum(length) * 2)
+
+#     while length[-1] -1 > distance:
+#         length[-1] -= 1
+#         distance += 2
+
+#     if distance == 0:
+#         return length + length[::-1]
+#     elif length[-1] -1 <= distance <= length[-1] + 1:
+#         return length + [distance] + length[::-1]
+#     else:
+#         distance = make_roop(i, distance)
+        # return length + [distance] + length[::-1]
+
+# T = int(input())
+
+# for _ in range(T):
+#     x, y = map(int, input().split())
+
+#     distance = y - x
+#     i = 1
+#     count = 0
+#     while distance > 0:
+#         if i - 2 <= distance <= i:
+#             count += 1
+#             distance = 0
+#         elif distance - (2 * i) >= -1:
+#             distance -= 2 * i
+#             count += 2
+#             i += 1
+#         else:
+#             i -= 1
+    
+#     print(count)
+
 T = int(input())
 
-result = []
-
 for _ in range(T):
-    y = int(input()) + 1
-    x = int(input()) - 1
+    n = int(input())
 
-    first = [1 for _ in range(x + 1)]
+    sosu = []
 
-    for _ in range(y-1):
-        second = [sum(first[:i]) for i in range(1, len(first)+1)]
-        first = second
+    for temp in range(2, n+1):
+        if temp > 1:
+            check = True
+            for i in range(2, temp):
+                if temp % i == 0:
+                    check = False
+                    break
+            
+            if check:
+                sosu.append(temp)
     
-    result.append(sum(first[:x+1]))
+    result = [0, len(sosu)]
 
-for temp in result:
-    print(temp)
+    for i in range(len(sosu)):
+        for j in range(i, len(sosu)):
+            if sosu[i] + sosu[j] == n:
+                if result[1] - result[0] > j - i:
+                    result[0] = i
+                    result[1] = j
+                break
+
+    print(sosu[result[0]], sosu[result[1]])
