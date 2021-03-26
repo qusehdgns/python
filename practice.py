@@ -595,32 +595,71 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
     
 #     print(count)
 
-T = int(input())
+# T = int(input())
 
-for _ in range(T):
+# for _ in range(T):
+#     n = int(input())
+
+#     sosu = []
+
+#     for temp in range(2, n+1):
+#         if temp > 1:
+#             check = True
+#             for i in range(2, temp):
+#                 if temp % i == 0:
+#                     check = False
+#                     break
+            
+#             if check:
+#                 sosu.append(temp)
+    
+#     result = [0, len(sosu)]
+
+#     for i in range(len(sosu)):
+#         for j in range(i, len(sosu)):
+#             if sosu[i] + sosu[j] == n:
+#                 if result[1] - result[0] > j - i:
+#                     result[0] = i
+#                     result[1] = j
+#                 break
+
+#     print(sosu[result[0]], sosu[result[1]])
+
+# M, N = map(int, input().split())
+
+# result = []
+
+# for temp in range(M, N+1):
+#     check = True
+#     if temp == 1:
+#         check = False
+#     for i in range(2, int(temp ** (1/2)) + 1):
+#         if temp % i == 0:
+#             check = False
+#             break
+    
+#     if check:
+#         result.append(temp)
+
+# for value in result:
+#     print(value)
+
+while True:
     n = int(input())
 
-    sosu = []
-
-    for temp in range(2, n+1):
+    if n == 0:
+        break
+    
+    count = 0
+    for temp in range(n+1, (2*n)+1):
         if temp > 1:
             check = True
-            for i in range(2, temp):
+            for i in range(2, int(temp ** (1/2)) + 1):
                 if temp % i == 0:
                     check = False
                     break
             
             if check:
-                sosu.append(temp)
-    
-    result = [0, len(sosu)]
+                count += 1
 
-    for i in range(len(sosu)):
-        for j in range(i, len(sosu)):
-            if sosu[i] + sosu[j] == n:
-                if result[1] - result[0] > j - i:
-                    result[0] = i
-                    result[1] = j
-                break
-
-    print(sosu[result[0]], sosu[result[1]])
+    print(count)
