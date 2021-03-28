@@ -125,37 +125,38 @@
 
 
 # 망가진 코드
-def solution(routes):
-    same_root = []
+# def solution(routes):
+#     same_root = []
     
-    for temp in routes:
-        if len(same_root) < 1:
-            same_root.append(temp)
-        else:
-            check = True
-            for part in same_root:
-                start_check = False
-                print(list(range(part[0], part[1] + 1)))
-                for i in range(temp[0], temp[1] + 1):
-                    if i in range(part[0], part[1]+1) and start_check == False:
-                        print(i)
-                        part[0] = i
-                        start_check = True
-                    elif i not in range(part[0], part[1]+1) and start_check == True:
-                        print(i)
-                        part[1] = i-1
-                        check = False
-                        start_check = False
-                        print()
-                        break                        
+#     for temp in routes:
+#         if len(same_root) < 1:
+#             same_root.append(temp)
+#         else:
+#             check = True
+#             for part in same_root:
+#                 start_check = False
+#                 print(list(range(part[0], part[1] + 1)))
+#                 for i in range(temp[0], temp[1] + 1):
+#                     if i in range(part[0], part[1]+1) and start_check == False:
+#                         print(i)
+#                         part[0] = i
+#                         start_check = True
+#                     elif i not in range(part[0], part[1]+1) and start_check == True:
+#                         print(i)
+#                         part[1] = i-1
+#                         check = False
+#                         start_check = False
+#                         print()
+#                         break                        
             
-            print(check)
-            if check:
-                print(temp)
-                same_root.append(temp)
+#             print(check)
+#             if check:
+#                 print(temp)
+#                 same_root.append(temp)
     
-    answer = len(same_root)
+#     answer = len(same_root)
                 
-    return same_root
+#     return same_root
 
-print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]]))
+# print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]]))
+
