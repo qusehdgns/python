@@ -644,22 +644,25 @@ Quiz) 사이트별로 비밀번호를 만들어주는 프로그램을 작성하�
 # for value in result:
 #     print(value)
 
-while True:
-    n = int(input())
+# while True:
+#     n = int(input())
 
-    if n == 0:
-        break
+#     if n == 0:
+#         break
     
-    count = 0
-    for temp in range(n+1, (2*n)+1):
-        if temp > 1:
-            check = True
-            for i in range(2, int(temp ** (1/2)) + 1):
-                if temp % i == 0:
-                    check = False
-                    break
+#     count = 0
+#     for temp in range(n+1, (2*n)+1):
+#         if temp > 1:
+#             check = True
+#             for i in range(2, int(temp ** (1/2)) + 1):
+#                 if temp % i == 0:
+#                     check = False
+#                     break
             
-            if check:
-                count += 1
+#             if check:
+#                 count += 1
 
-    print(count)
+#     print(count)
+
+print("{0:a>10}".format(500))
+print("{0: >+10}".format(500))
