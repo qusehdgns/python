@@ -268,6 +268,7 @@
 
 # print(string.lower())
 
+<<<<<<< Updated upstream
 # def calc(num):
 
 #     num_check = num
@@ -536,3 +537,15 @@ test = "--2-342afAFADFADF"
 test.lower()
 
 print(test.lower())
+=======
+
+N = int(input())
+S = (3, 5)
+
+for i in range(0, N+1, S[0]):
+    if (N-i)%S[1]==0:
+        print(((N-i)//S[1]) + i//S[0])
+        break
+else:
+    print(-1)
+>>>>>>> Stashed changes
