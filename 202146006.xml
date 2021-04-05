@@ -1,6 +1,16 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="t|mmQ@K5]D0sO0!^@[UY">opencsvandinserdb</variable>
+    <variable id="HeoVL4!`^#+EPkGlz$Ff">f</variable>
+    <variable id="8!6ojn$p{%m+r8}+@tgU">reader</variable>
+    <variable id="ir0tHKbWlgL:{K59uY/=">data</variable>
+    <variable id="x_^AlyQA]VV#qk=Bq%ld">con</variable>
+    <variable id="-|YdqyaoiRjNd]4,Tom[">output</variable>
+    <variable id="#Z,ANf,L8AV:6V=U@9|@">cur</variable>
+    <variable id="3wr0O?r,bV;=]e.cP]6T">i</variable>
+    <variable id="|Lr3`xiBfOA#O(yV%#RX">sql</variable>
+    <variable id="xWb,rvv=:S,%H.-z~c3S">temp</variable>
+    <variable id="VS7/GNr/K{`:IB~3(^/w">rows</variable>
     <variable id="kp4rxqgp$m*`,C[so0O}">df</variable>
     <variable id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</variable>
     <variable id="yF0$/]05l,=`1]tCXy:u">low_temp</variable>
@@ -17,457 +27,724 @@
             <next>
               <block type="csv_library" id="Xqa}VNf%pl1wZCOWY|o%">
                 <next>
-                  <block type="webdefine" id="P_9#UqB@5dmi|H{HI*Ju">
-                    <value name="1">
-                      <block type="variables_get" id=")FE)K5~6GmG(D6-U:*-i">
-                        <field name="VAR" id="t|mmQ@K5]D0sO0!^@[UY">opencsvandinserdb</field>
-                      </block>
-                    </value>
-                    <value name="2">
-                      <shadow type="indata" id="d7jKZHN4mz=[!OSp!edi">
-                        <field name="indata1"></field>
-                      </shadow>
-                    </value>
+                  <block type="sqlite_library" id="ABdOOGsiA5!z#UIOiA2e">
                     <next>
-                      <block type="withs" id="4l/sjMlwU:]f~s?EnOm!">
-                        <value name="set0">
-                          <shadow type="indata" id="Dks|oJR~,.Me?^;d3Qjd">
-                            <field name="indata1">open(</field>
+                      <block type="webdefine" id="P_9#UqB@5dmi|H{HI*Ju">
+                        <value name="1">
+                          <block type="variables_get" id=")FE)K5~6GmG(D6-U:*-i">
+                            <field name="VAR" id="t|mmQ@K5]D0sO0!^@[UY">opencsvandinserdb</field>
+                          </block>
+                        </value>
+                        <value name="2">
+                          <shadow type="indata" id="d7jKZHN4mz=[!OSp!edi">
+                            <field name="indata1">filename</field>
                           </shadow>
                         </value>
-                        <value name="set1">
-                          <shadow type="indata" id="(bhnt0zLjUSHx_e~|)2C">
-                            <field name="indata1"></field>
-                          </shadow>
-                        </value>
-                        <next>
-                          <block type="pandas_csv_read" id="5bh7#Km5AwX6TU[0y7ss">
-                            <value name="d1">
-                              <block type="variables_get" id="CrN#CPf:Crj5FPOwA+Ya">
-                                <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                        <statement name="DO">
+                          <block type="withs" id="^]CZdKFl;~Z@KTJ)f!q9">
+                            <value name="set0">
+                              <shadow type="indata" id=".a-K4DwzJr_3g~XY#`VD">
+                                <field name="indata1">open(filename, 'rt', encoding='utf8')</field>
+                              </shadow>
+                            </value>
+                            <value name="set1">
+                              <shadow type="indata" id="_#ug9-p$aa[WlWS{1djS">
+                                <field name="indata1">f</field>
+                              </shadow>
+                              <block type="variables_get" id="Hjy31l~.rt9Px-1}$[A#">
+                                <field name="VAR" id="HeoVL4!`^#+EPkGlz$Ff">f</field>
                               </block>
                             </value>
-                            <value name="va">
-                              <block type="fileopen" id="1PM3Vdx23,uI_b=fSD|q">
+                            <statement name="in">
+                              <block type="math_change" id="43v7E6-4789j4!/G`k$u">
+                                <field name="VAR" id="8!6ojn$p{%m+r8}+@tgU">reader</field>
+                                <field name="NAME">=</field>
+                                <value name="DELTA">
+                                  <shadow type="indata" id="WE@h8OuA4w`]+Jut4+s;">
+                                    <field name="indata1">3</field>
+                                  </shadow>
+                                  <block type="csv_reader_writer" id="rQ!vvk_!K-c=[Vv(N,Jh">
+                                    <field name="DROP">reader</field>
+                                    <value name="VAR">
+                                      <shadow type="indata" id="e4]My7E;wP|,1C*E~iJC">
+                                        <field name="indata1">f</field>
+                                      </shadow>
+                                      <block type="variables_get" id="!^QnacG{qgsw#6.0o#Ud">
+                                        <field name="VAR" id="HeoVL4!`^#+EPkGlz$Ff">f</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="create_list" id="EsdZXmDeMS9fo21-Ffs|">
+                                    <value name="list">
+                                      <block type="variables_get" id="6mJ;l|h3;gQ+@gxb`q*?">
+                                        <field name="VAR" id="-|YdqyaoiRjNd]4,Tom[">output</field>
+                                      </block>
+                                    </value>
+                                    <value name="text">
+                                      <shadow type="indata" id="$Q*1jgO}WwwHy44[MD:}">
+                                        <field name="indata1"></field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block type="py_for" id="RsEvkN@@UB4-w,uZcU7Q">
+                                        <value name="item">
+                                          <shadow type="indata" id="i[Z:h}qAs4`*wm+Yll?O">
+                                            <field name="indata1">i</field>
+                                          </shadow>
+                                          <block type="variables_get" id="{}c+L|}E@xBZdWN*J5NS">
+                                            <field name="VAR" id="3wr0O?r,bV;=]e.cP]6T">i</field>
+                                          </block>
+                                        </value>
+                                        <value name="list">
+                                          <shadow type="indata" id="ved.h64^Y_c~|POIDr.~">
+                                            <field name="indata1">reader</field>
+                                          </shadow>
+                                        </value>
+                                        <statement name="value">
+                                          <block type="create_new_list2" id="qu^8`5e.H:h4IA12Ccnm">
+                                            <field name="PROPERTY">APPEND</field>
+                                            <value name="VAR1">
+                                              <block type="variables_get" id="62]KP:hH@XMp6;MvBENe">
+                                                <field name="VAR" id="-|YdqyaoiRjNd]4,Tom[">output</field>
+                                              </block>
+                                            </value>
+                                            <value name="DIVISOR">
+                                              <shadow type="indata" id="MV|2D/[6_$mFdE?Y-sf!">
+                                                <field name="indata1">i</field>
+                                              </shadow>
+                                              <block type="variables_get" id="1Mtx;P-d^Oh,kK(a=,CL">
+                                                <field name="VAR" id="3wr0O?r,bV;=]e.cP]6T">i</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="webreturn2" id="`z3/EePK_Au,,NjWWc-E">
+                                            <value name="return">
+                                              <shadow type="indata" id="I=kmS@KBc99f:}mTi4RE">
+                                                <field name="indata1"></field>
+                                              </shadow>
+                                              <block type="variables_get" id="NSt`NhD4$l(?1H.,4ES|">
+                                                <field name="VAR" id="-|YdqyaoiRjNd]4,Tom[">output</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="func_return1" id="G2z8@tLOZ5sNc87~j{w}">
+                            <value name="1">
+                              <block type="variables_get" id="D6kIUVU|B%l#*v.Q;K/Q">
+                                <field name="VAR" id="ir0tHKbWlgL:{K59uY/=">data</field>
+                              </block>
+                            </value>
+                            <value name="2">
+                              <block type="variables_get" id="rWDRNt9UTqd5P3ZE8J[n">
+                                <field name="VAR" id="t|mmQ@K5]D0sO0!^@[UY">opencsvandinserdb</field>
+                              </block>
+                            </value>
+                            <value name="3">
+                              <shadow type="indata" id="+`M22CH2z4vB7=+Wr!r,">
+                                <field name="indata1"></field>
+                              </shadow>
+                              <block type="fileopen" id="f$R6fD]f{)H^gj:j!/]1">
                                 <field name="file_path">"data/daegu.csv"</field>
                               </block>
                             </value>
                             <next>
-                              <block type="csvdataframe_J" id="+VQ;d{?=04s}!`#2$KQO">
-                                <value name="input_var">
-                                  <block type="variables_get" id=".23=eJAy2BH951%q4p*9">
-                                    <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                  </block>
-                                </value>
-                                <value name="csv">
-                                  <shadow type="indata" id=";|oAAp$2Ydw!]|m3~`,3">
-                                    <field name="indata1"></field>
+                              <block type="math_change" id=":g=Mp.;3_u-V9Lp/{`ov">
+                                <field name="VAR" id="ir0tHKbWlgL:{K59uY/=">data</field>
+                                <field name="NAME">=</field>
+                                <value name="DELTA">
+                                  <shadow type="indata" id="#_iFFh7UXk,T5jYXdBaO">
+                                    <field name="indata1">3</field>
                                   </shadow>
-                                  <block type="variables_get" id="X[d:63@8zhp`98K#sbqO">
-                                    <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                                  <block type="change_collection" id="uXxVNY=-}}nV/i/-,UN[">
+                                    <field name="collection">tuple</field>
+                                    <value name="LIST">
+                                      <shadow type="indata" id="$]qy$I(0YJPjkVk|/@wF">
+                                        <field name="indata1"></field>
+                                      </shadow>
+                                      <block type="variables_get" id=";;]0fD:1{2541J[`-dbT">
+                                        <field name="VAR" id="ir0tHKbWlgL:{K59uY/=">data</field>
+                                      </block>
+                                    </value>
                                   </block>
                                 </value>
                                 <next>
-                                  <block type="pandas_dropna" id="e(fh-ets+gDTRq`IwvYF">
-                                    <field name="DROP">fillna</field>
-                                    <value name="d1">
-                                      <block type="variables_get" id="o.fGd7zQw2a0XUAtEqAE">
-                                        <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                      </block>
-                                    </value>
-                                    <value name="d2">
-                                      <block type="variables_get" id="U|pR/VBY};nfiXh*r[ag">
-                                        <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                      </block>
-                                    </value>
-                                    <value name="d3">
-                                      <shadow type="indata" id="m,)UV0Hf2y48|N5Vyx,.">
-                                        <field name="indata1">0</field>
+                                  <block type="db_conn" id="7l{1Y!?.fd)q#u`(#^h{">
+                                    <field name="list" id="x_^AlyQA]VV#qk=Bq%ld">con</field>
+                                    <value name="va">
+                                      <shadow type="indata" id="1{yl]WYA5wsDF8#M{y9,">
+                                        <field name="indata1">'temp.db'</field>
                                       </shadow>
                                     </value>
                                     <next>
-                                      <block type="create_np_array" id="xN17|Xx^!aN/@Gl}rHk?">
-                                        <field name="list" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
-                                        <value name="text">
-                                          <shadow type="indata" id="s}a6}olg{C!y=ZD$ehAf">
-                                            <field name="indata1">[1,2,3,4]</field>
-                                          </shadow>
-                                          <block type="pandas_oc" id="lsaK4+g|6OZAfB/aw4`i">
-                                            <field name="DROP">loc</field>
-                                            <value name="d0">
-                                              <block type="variables_get" id="w5/U:AZDBCq-!xbUdo+n">
-                                                <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                              </block>
-                                            </value>
-                                            <value name="d1">
-                                              <shadow type="indata" id="mTirb3x%VJ9rOVQhAz5y">
-                                                <field name="indata1">:, 'avg temp'</field>
-                                              </shadow>
-                                            </value>
-                                          </block>
-                                        </value>
-                                        <value name="dtype">
-                                          <shadow type="indata" id="H=?fGLncSlXNX8chM0Ax">
-                                            <field name="indata1">dtype = float</field>
-                                          </shadow>
-                                        </value>
+                                      <block type="db_cur" id="OP.!x:;f.)8[.ZE)n,Rm">
+                                        <field name="list" id="#Z,ANf,L8AV:6V=U@9|@">cur</field>
+                                        <field name="list1" id="x_^AlyQA]VV#qk=Bq%ld">con</field>
                                         <next>
-                                          <block type="create_np_array" id="q3e}G1t(c(I`z-!5h)59">
-                                            <field name="list" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
-                                            <value name="text">
-                                              <shadow type="indata">
-                                                <field name="indata1">[1,2,3,4]</field>
+                                          <block type="db_deletedb" id="T5^$,o4zl1gGB@kz[a,]">
+                                            <field name="list1" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
+                                            <value name="SET0">
+                                              <shadow type="indata" id="pV_)w7z#1Z%1/N+[1lXo">
+                                                <field name="indata1">테이블</field>
                                               </shadow>
-                                              <block type="pandas_oc" id="Ua|r1SB_A[LS*iQno-f9">
-                                                <field name="DROP">loc</field>
-                                                <value name="d0">
-                                                  <block type="variables_get" id="$vwxW/bKGa9p)6hWupP/">
-                                                    <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                                  </block>
-                                                </value>
-                                                <value name="d1">
-                                                  <shadow type="indata" id=";}::nrEj`64Y9v.`eupt">
-                                                    <field name="indata1">:, 'low temp'</field>
-                                                  </shadow>
-                                                </value>
+                                              <block type="variables_get" id="vI;FNB@zuW0Zo@-,w[|Z">
+                                                <field name="VAR" id="xWb,rvv=:S,%H.-z~c3S">temp</field>
                                               </block>
-                                            </value>
-                                            <value name="dtype">
-                                              <shadow type="indata" id="FM,DrFfqPe}{v(XKECZp">
-                                                <field name="indata1">dtype = float</field>
-                                              </shadow>
                                             </value>
                                             <next>
-                                              <block type="create_np_array" id="Xv!?#B|tjOcJF?u3U]Jm">
-                                                <field name="list" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
-                                                <value name="text">
-                                                  <shadow type="indata">
-                                                    <field name="indata1">[1,2,3,4]</field>
+                                              <block type="db_create" id="+k)hU][cdMSp?{fr0V]1">
+                                                <field name="list1" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
+                                                <value name="d1">
+                                                  <shadow type="indata" id="tepfbwvH6O|b9zsVjkp]">
+                                                    <field name="indata1">테이블</field>
                                                   </shadow>
-                                                  <block type="pandas_oc" id="Y5-G+;Hr-3:*3$gnmdp5">
-                                                    <field name="DROP">loc</field>
-                                                    <value name="d0">
-                                                      <block type="variables_get" id="j6)g@KK7]y2Z_WyN=(X+">
-                                                        <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
-                                                      </block>
-                                                    </value>
-                                                    <value name="d1">
-                                                      <shadow type="indata" id="^?xUhrjOCl1Ssd!s5^-(">
-                                                        <field name="indata1">:, 'high temp'</field>
-                                                      </shadow>
-                                                    </value>
+                                                  <block type="variables_get" id=")NA/!|CzRx3[=Y7|YyPL">
+                                                    <field name="VAR" id="xWb,rvv=:S,%H.-z~c3S">temp</field>
                                                   </block>
                                                 </value>
-                                                <value name="dtype">
-                                                  <shadow type="indata" id="Y5,7nnfVzEsyu`%)H5-+">
-                                                    <field name="indata1">dtype = float</field>
+                                                <value name="d2">
+                                                  <shadow type="indata" id="eehM5{X|-s@yJZ)8ZjBq">
+                                                    <field name="indata1">date str, avg float, low float, high float</field>
                                                   </shadow>
                                                 </value>
                                                 <next>
-                                                  <block type="csvdataframe_J" id="DQ]k3Et.1/pwz{QYs_3]">
-                                                    <value name="input_var">
-                                                      <block type="variables_get" id="a[dv?Y8=yB,5ZqyGy1CU">
-                                                        <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
-                                                      </block>
-                                                    </value>
-                                                    <value name="csv">
-                                                      <shadow type="indata" id="mw%3}M_G?KUnN%ecoAS:">
-                                                        <field name="indata1"></field>
+                                                  <block type="db_exec" id="ht!L|z(v}=WEn]%~`3~W">
+                                                    <field name="list" id="#Z,ANf,L8AV:6V=U@9|@">cur</field>
+                                                    <field name="d1">execute</field>
+                                                    <value name="va">
+                                                      <shadow type="indata" id="MDNEN+]O)DX{lZThlXR/">
+                                                        <field name="indata1">sql</field>
                                                       </shadow>
-                                                      <block type="numpy_reshape" id="=:#bHA7vo^*5}X-xo:2T">
-                                                        <value name="numpy_reshape_val">
-                                                          <block type="variables_get" id="j=i*W`yzM`S!.apdpjbo">
-                                                            <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="numpy_reshape_struct">
-                                                          <shadow type="indata" id="TG|A%+u!d?@Si^6t#doz">
-                                                            <field name="indata1">21,365</field>
-                                                          </shadow>
-                                                        </value>
+                                                      <block type="variables_get" id="J0Jp|XPM}]0dK/QKm{TJ">
+                                                        <field name="VAR" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
                                                       </block>
                                                     </value>
                                                     <next>
-                                                      <block type="csvdataframe_J" id="rU8[e7:=6nafmn%niU!5">
-                                                        <value name="input_var">
-                                                          <block type="variables_get" id="9I7aZWve9Zx.{z1N=Bb0">
-                                                            <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
+                                                      <block type="db_insert" id="0bFM}];`j1NKYQtqV/vw">
+                                                        <field name="list1" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
+                                                        <value name="d1">
+                                                          <shadow type="indata" id="[}YL0th*;OGM*2aLLEK[">
+                                                            <field name="indata1">테이블</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="UcZuZWdXC*7s-o([J:{P">
+                                                            <field name="VAR" id="xWb,rvv=:S,%H.-z~c3S">temp</field>
                                                           </block>
                                                         </value>
-                                                        <value name="csv">
-                                                          <shadow type="indata">
-                                                            <field name="indata1"></field>
+                                                        <value name="d2">
+                                                          <shadow type="indata" id="rel(Djup[;0F,Z]$IEYs">
+                                                            <field name="indata1">(?, ?, ?, ?)</field>
                                                           </shadow>
-                                                          <block type="numpy_reshape" id="lq0|2(:CoCcsX;F3vjo5">
-                                                            <value name="numpy_reshape_val">
-                                                              <block type="variables_get" id="Kr~h2hlM.28v=k+a*#f3">
-                                                                <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
-                                                              </block>
-                                                            </value>
-                                                            <value name="numpy_reshape_struct">
-                                                              <shadow type="indata" id="1c^-4[JNYBS7(^[nN=y!">
-                                                                <field name="indata1">21,365</field>
-                                                              </shadow>
-                                                            </value>
-                                                          </block>
                                                         </value>
                                                         <next>
-                                                          <block type="csvdataframe_J" id=".-09zGc(.}nzB?+[OBQ^">
-                                                            <value name="input_var">
-                                                              <block type="variables_get" id="C(=8cUiDjtxa}4=:{mw~">
-                                                                <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
+                                                          <block type="db_execM" id="}dSWH8P+hons@$S0HPxA">
+                                                            <field name="list" id="#Z,ANf,L8AV:6V=U@9|@">cur</field>
+                                                            <field name="d1">executemany</field>
+                                                            <value name="va1">
+                                                              <shadow type="indata" id="M/sK4cxLDoa$`.Bj@^H4">
+                                                                <field name="indata1">sql</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="S,v-k_o}j.t(c(T)qIk~">
+                                                                <field name="VAR" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
                                                               </block>
                                                             </value>
-                                                            <value name="csv">
-                                                              <shadow type="indata">
-                                                                <field name="indata1"></field>
+                                                            <value name="va2">
+                                                              <shadow type="indata" id="L_Efu]Ti5ut0+gte/7fY">
+                                                                <field name="indata1">data</field>
                                                               </shadow>
-                                                              <block type="numpy_reshape" id="MA/@ikW?H1SWro~Nvo@)">
-                                                                <value name="numpy_reshape_val">
-                                                                  <block type="variables_get" id="v}wH#0zV40[eZtz;kS$U">
-                                                                    <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
-                                                                  </block>
-                                                                </value>
-                                                                <value name="numpy_reshape_struct">
-                                                                  <shadow type="indata" id="Dc}IG*rC2z;*crLi}PxA">
-                                                                    <field name="indata1">21,365</field>
-                                                                  </shadow>
-                                                                </value>
+                                                              <block type="variables_get" id="`VjQUr%o~f*v3%H93DqZ">
+                                                                <field name="VAR" id="ir0tHKbWlgL:{K59uY/=">data</field>
                                                               </block>
                                                             </value>
                                                             <next>
-                                                              <block type="math_change" id="{r(S,%fuoGd0LF2vA,~}">
-                                                                <field name="VAR" id="ba%LM-Sg)]}NsULK5;FE">avg_temp_avg</field>
-                                                                <field name="NAME">=</field>
-                                                                <value name="DELTA">
-                                                                  <shadow type="indata" id=";|jVo@#a*-9q}X8Q`f`6">
-                                                                    <field name="indata1">3</field>
-                                                                  </shadow>
-                                                                  <block type="block_sum_min" id="r8=W.KM4LkqTQA.KC.Y=">
-                                                                    <field name="DROP">mean</field>
-                                                                    <value name="VAR">
-                                                                      <block type="variables_get" id="H!8O*rf^lQ3NGG#xlyb}">
-                                                                        <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
-                                                                      </block>
-                                                                    </value>
-                                                                    <value name="INPUT">
-                                                                      <shadow type="indata" id="Z|8-RY~0/68KSN[/M9DR">
-                                                                        <field name="indata1"></field>
-                                                                      </shadow>
-                                                                    </value>
-                                                                  </block>
-                                                                </value>
+                                                              <block type="db_commit" id="/2xCb_Xa^-@:iy_7:OQ(">
+                                                                <field name="list1" id="x_^AlyQA]VV#qk=Bq%ld">con</field>
                                                                 <next>
-                                                                  <block type="math_change" id="5?T()7YU;L=nJ3_3h|*}">
-                                                                    <field name="VAR" id="kN!6zoSs;Wf6%wB2l1R.">low_temp_avg</field>
-                                                                    <field name="NAME">=</field>
-                                                                    <value name="DELTA">
-                                                                      <shadow type="indata">
-                                                                        <field name="indata1">3</field>
+                                                                  <block type="db_select2" id="FS(usxvvpW)W!zs[uaLK">
+                                                                    <field name="list1" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
+                                                                    <value name="d1">
+                                                                      <shadow type="indata" id=")f*EnIMU%?g6hBJ1ODBL">
+                                                                        <field name="indata1">*</field>
                                                                       </shadow>
-                                                                      <block type="block_sum_min" id="z0=$v3|FzR`RViD^*Y*/">
-                                                                        <field name="DROP">mean</field>
-                                                                        <value name="VAR">
-                                                                          <block type="variables_get" id="mF!x_6?u_!MNG]k,pn.?">
-                                                                            <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
-                                                                          </block>
-                                                                        </value>
-                                                                        <value name="INPUT">
-                                                                          <shadow type="indata" id="wG34OwP/.][1b5}i2*1t">
-                                                                            <field name="indata1"></field>
-                                                                          </shadow>
-                                                                        </value>
+                                                                    </value>
+                                                                    <value name="d2">
+                                                                      <shadow type="indata" id="-|Vot;RIKCi0iYuhfzn{">
+                                                                        <field name="indata1">테이블</field>
+                                                                      </shadow>
+                                                                      <block type="variables_get" id="^KapkcJj3#@?r8(X)?kH">
+                                                                        <field name="VAR" id="xWb,rvv=:S,%H.-z~c3S">temp</field>
                                                                       </block>
                                                                     </value>
                                                                     <next>
-                                                                      <block type="math_change" id="sOtR*T[B#U1Sk)/wM|8o">
-                                                                        <field name="VAR" id="i:2r~33+|G6|qs=~=R7s">high_temp_avg</field>
-                                                                        <field name="NAME">=</field>
-                                                                        <value name="DELTA">
-                                                                          <shadow type="indata">
-                                                                            <field name="indata1">3</field>
+                                                                      <block type="db_exec" id="u]QlMr%8%%Fs4}Z8$TAM">
+                                                                        <field name="list" id="#Z,ANf,L8AV:6V=U@9|@">cur</field>
+                                                                        <field name="d1">execute</field>
+                                                                        <value name="va">
+                                                                          <shadow type="indata" id="oE@0)=COMNrRU#lcxccX">
+                                                                            <field name="indata1">sql</field>
                                                                           </shadow>
-                                                                          <block type="block_sum_min" id="N4xkr1Z,486kBJCDpJ}?">
-                                                                            <field name="DROP">mean</field>
-                                                                            <value name="VAR">
-                                                                              <block type="variables_get" id="x?s.fTJGdJ7WoCT6^d?l">
-                                                                                <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
-                                                                              </block>
-                                                                            </value>
-                                                                            <value name="INPUT">
-                                                                              <shadow type="indata" id="3_XGO9~BT#kIk]D$!$V%">
-                                                                                <field name="indata1"></field>
-                                                                              </shadow>
-                                                                            </value>
+                                                                          <block type="variables_get" id="4iAA`)vt=BG~}Dmn0~W@">
+                                                                            <field name="VAR" id="|Lr3`xiBfOA#O(yV%#RX">sql</field>
                                                                           </block>
                                                                         </value>
                                                                         <next>
-                                                                          <block type="matplotlib_main" id="(jwY2?G:Ny[w#^PnmL)*">
-                                                                            <value name="matplotlib_main_cols">
-                                                                              <shadow type="math_number" id="yiM`I7`!qk$Kw(eXX`ZW">
-                                                                                <field name="NUM">1</field>
-                                                                              </shadow>
-                                                                            </value>
-                                                                            <value name="matplotlib_main_rows">
-                                                                              <shadow type="math_number" id="g*u;?Hg1Isn@|HJultwt">
-                                                                                <field name="NUM">1</field>
-                                                                              </shadow>
-                                                                            </value>
+                                                                          <block type="db_fetch" id="K;:6zQnw*|EOs4r]_nia">
+                                                                            <field name="list1" id="VS7/GNr/K{`:IB~3(^/w">rows</field>
+                                                                            <field name="list2" id="#Z,ANf,L8AV:6V=U@9|@">cur</field>
+                                                                            <field name="NAME">fetchall()</field>
                                                                             <next>
-                                                                              <block type="matplotlib_pre_graph" id="I-5?::},#.O*=@}Pv0!$">
-                                                                                <field name="matplotlib_graph_select">matplotlib_line</field>
-                                                                                <value name="matplotlib_pre_graph_location1">
-                                                                                  <shadow type="math_number" id="VH~*=o5)5igLmp}_Pw$u">
-                                                                                    <field name="NUM">0</field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_graph_location2">
-                                                                                  <shadow type="math_number" id="lW_5Zqs07fs81d,OxSw,">
-                                                                                    <field name="NUM">0</field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="xx">
-                                                                                  <shadow type="indata" id="UyWSrqWtG/R~0c22Y%2O">
-                                                                                    <field name="indata1">range(1,366)</field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="yy">
-                                                                                  <shadow type="indata" id="-pf7sj[Vm/iqH5)0tWPY">
-                                                                                    <field name="indata1">t,s2</field>
-                                                                                  </shadow>
-                                                                                  <block type="variables_get" id="H3K@jl;?Q@:dH.j{G6Mw">
-                                                                                    <field name="VAR" id="ba%LM-Sg)]}NsULK5;FE">avg_temp_avg</field>
-                                                                                  </block>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_graph_Title">
-                                                                                  <shadow type="indata" id="^DiUfv2(Z$aqHeH3If.M">
-                                                                                    <field name="indata1"></field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_graph_Xlable">
-                                                                                  <shadow type="indata" id="x)(v~pk_Ku)#!,BN^Ia,">
-                                                                                    <field name="indata1"></field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_graph_Ylable">
-                                                                                  <shadow type="indata" id="M3uEbacE:=X@KjCaFf/$">
-                                                                                    <field name="indata1"></field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_legend">
-                                                                                  <shadow type="indata" id="Wbs?3n!l6Fnvw}lRb4se">
-                                                                                    <field name="indata1">avg temp</field>
-                                                                                  </shadow>
-                                                                                </value>
-                                                                                <value name="matplotlib_pre_color">
-                                                                                  <shadow type="indata" id="?Fsfs9[^9P{,,=GvG0MK">
-                                                                                    <field name="indata1">'g'</field>
-                                                                                  </shadow>
-                                                                                </value>
+                                                                              <block type="db_close" id="LNs|o:T_}]7L5M0dz?hi">
+                                                                                <field name="list1" id="x_^AlyQA]VV#qk=Bq%ld">con</field>
                                                                                 <next>
-                                                                                  <block type="matplotlib_pre_graph" id=":o)Q;u)TnSH]?GLeH_S0">
-                                                                                    <field name="matplotlib_graph_select">matplotlib_line</field>
-                                                                                    <value name="matplotlib_pre_graph_location1">
-                                                                                      <shadow type="math_number" id="wJMI0==bsiRj|;HARB[F">
-                                                                                        <field name="NUM">0</field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="matplotlib_pre_graph_location2">
-                                                                                      <shadow type="math_number" id="Q4ya{OMt$dJq6#PPIfhl">
-                                                                                        <field name="NUM">0</field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="xx">
-                                                                                      <shadow type="indata" id="y,P%kv+Bt.kU7(Qe,tP.">
-                                                                                        <field name="indata1">range(1,366)</field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="yy">
-                                                                                      <shadow type="indata">
-                                                                                        <field name="indata1">t,s2</field>
-                                                                                      </shadow>
-                                                                                      <block type="variables_get" id="C55[T`i~olLAGF1v#;Ny">
-                                                                                        <field name="VAR" id="kN!6zoSs;Wf6%wB2l1R.">low_temp_avg</field>
+                                                                                  <block type="csvdataframe_J" id="+VQ;d{?=04s}!`#2$KQO">
+                                                                                    <value name="input_var">
+                                                                                      <block type="variables_get" id=".23=eJAy2BH951%q4p*9">
+                                                                                        <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
                                                                                       </block>
                                                                                     </value>
-                                                                                    <value name="matplotlib_pre_graph_Title">
-                                                                                      <shadow type="indata" id="dgVq)?;sL?gPk*F,]{6/">
-                                                                                        <field name="indata1"></field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="matplotlib_pre_graph_Xlable">
-                                                                                      <shadow type="indata" id=";!sH#3qS/9BeiJdE/VMA">
-                                                                                        <field name="indata1"></field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="matplotlib_pre_graph_Ylable">
-                                                                                      <shadow type="indata" id="UzKPl91|XBe17vD=)3}R">
-                                                                                        <field name="indata1"></field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="matplotlib_pre_legend">
-                                                                                      <shadow type="indata" id="IoufWNOA;6~a9EynB)dm">
-                                                                                        <field name="indata1">low temp</field>
-                                                                                      </shadow>
-                                                                                    </value>
-                                                                                    <value name="matplotlib_pre_color">
-                                                                                      <shadow type="indata" id="[s~,*GT~/(RXRwX4fWf(">
-                                                                                        <field name="indata1">'b'</field>
+                                                                                    <value name="csv">
+                                                                                      <shadow type="indata" id=";|oAAp$2Ydw!]|m3~`,3">
+                                                                                        <field name="indata1">rows, columns=["date", "avg temp", "low temp", "high temp"]</field>
                                                                                       </shadow>
                                                                                     </value>
                                                                                     <next>
-                                                                                      <block type="matplotlib_pre_graph" id="[u/B|wF2WZ6J/6e}+Mw;">
-                                                                                        <field name="matplotlib_graph_select">matplotlib_line</field>
-                                                                                        <value name="matplotlib_pre_graph_location1">
-                                                                                          <shadow type="math_number" id="w(d-zuNHvEFO{N;{KQ(;">
-                                                                                            <field name="NUM">0</field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="matplotlib_pre_graph_location2">
-                                                                                          <shadow type="math_number" id="ksgv_cvW=0mZ8j[Q}=Lc">
-                                                                                            <field name="NUM">0</field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="xx">
-                                                                                          <shadow type="indata" id="+D_hI**.-kMslU0Yapht">
-                                                                                            <field name="indata1">range(1,366)</field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="yy">
-                                                                                          <shadow type="indata">
-                                                                                            <field name="indata1">t,s2</field>
-                                                                                          </shadow>
-                                                                                          <block type="variables_get" id="C8|G-GspbY8Z%(oC}dY$">
-                                                                                            <field name="VAR" id="i:2r~33+|G6|qs=~=R7s">high_temp_avg</field>
+                                                                                      <block type="pandas_dropna" id="1)qx$;IM}JFW#n3r:Pq8">
+                                                                                        <field name="DROP">fillna</field>
+                                                                                        <value name="d1">
+                                                                                          <block type="variables_get" id="0S~nbKO,#8^2A3D[+=Vw">
+                                                                                            <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
                                                                                           </block>
                                                                                         </value>
-                                                                                        <value name="matplotlib_pre_graph_Title">
-                                                                                          <shadow type="indata" id="%apmph_mOIFo%GCUMUif">
-                                                                                            <field name="indata1"></field>
-                                                                                          </shadow>
+                                                                                        <value name="d2">
+                                                                                          <block type="variables_get" id="F:cvS/tQKY~N}6C|-wS0">
+                                                                                            <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                                                                                          </block>
                                                                                         </value>
-                                                                                        <value name="matplotlib_pre_graph_Xlable">
-                                                                                          <shadow type="indata" id="2zIQ6W1RC%!UA3)s43l4">
-                                                                                            <field name="indata1"></field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="matplotlib_pre_graph_Ylable">
-                                                                                          <shadow type="indata" id="V1xdYWk1(VNXd=tC%#Ri">
-                                                                                            <field name="indata1"></field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="matplotlib_pre_legend">
-                                                                                          <shadow type="indata" id="52bl4c0S|v}yYL%Lv/=o">
-                                                                                            <field name="indata1">high temp</field>
-                                                                                          </shadow>
-                                                                                        </value>
-                                                                                        <value name="matplotlib_pre_color">
-                                                                                          <shadow type="indata" id="AN.i{wHF`ii;0`PMZM7f">
-                                                                                            <field name="indata1">'r'</field>
+                                                                                        <value name="d3">
+                                                                                          <shadow type="indata" id="=AG#i-yP7~wA%Dx}YE|5">
+                                                                                            <field name="indata1">0</field>
                                                                                           </shadow>
                                                                                         </value>
                                                                                         <next>
-                                                                                          <block type="matplotlib_plt_show" id="`iI[;OKZ][1@SzmQM35:"></block>
+                                                                                          <block type="create_np_array2" id="nP$Ac7cgWHlIeR@K4;eX">
+                                                                                            <field name="list" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
+                                                                                            <value name="text">
+                                                                                              <shadow type="indata" id="tq2m95!nP^Yw|M463%9l">
+                                                                                                <field name="indata1"></field>
+                                                                                              </shadow>
+                                                                                              <block type="pandas_oc" id="lsaK4+g|6OZAfB/aw4`i">
+                                                                                                <field name="DROP">loc</field>
+                                                                                                <value name="d0">
+                                                                                                  <block type="variables_get" id="w5/U:AZDBCq-!xbUdo+n">
+                                                                                                    <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="d1">
+                                                                                                  <shadow type="indata" id="mTirb3x%VJ9rOVQhAz5y">
+                                                                                                    <field name="indata1">:, 'avg temp'</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="text2">
+                                                                                              <shadow type="indata" id="Uu!Cd5LCD5oRcE}/UKjq">
+                                                                                                <field name="indata1"> : </field>
+                                                                                              </shadow>
+                                                                                            </value>
+                                                                                            <next>
+                                                                                              <block type="create_np_array2" id="28+hkF|v38J0`P4XmRDz">
+                                                                                                <field name="list" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
+                                                                                                <value name="text">
+                                                                                                  <shadow type="indata" id="#1yV:.q~{hWdA.4[5m_F">
+                                                                                                    <field name="indata1"></field>
+                                                                                                  </shadow>
+                                                                                                  <block type="pandas_oc" id="Ua|r1SB_A[LS*iQno-f9">
+                                                                                                    <field name="DROP">loc</field>
+                                                                                                    <value name="d0">
+                                                                                                      <block type="variables_get" id="$vwxW/bKGa9p)6hWupP/">
+                                                                                                        <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="d1">
+                                                                                                      <shadow type="indata" id=";}::nrEj`64Y9v.`eupt">
+                                                                                                        <field name="indata1">:, 'low temp'</field>
+                                                                                                      </shadow>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="text2">
+                                                                                                  <shadow type="indata" id="fH_wcQT%5Z1.[}h;;#l#">
+                                                                                                    <field name="indata1"> : </field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <next>
+                                                                                                  <block type="create_np_array2" id="[IA)W)*ZSIF^582@nt2-">
+                                                                                                    <field name="list" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
+                                                                                                    <value name="text">
+                                                                                                      <shadow type="indata" id="UGJB0B,`UKrcs!5lU1F*">
+                                                                                                        <field name="indata1"></field>
+                                                                                                      </shadow>
+                                                                                                      <block type="pandas_oc" id="Y5-G+;Hr-3:*3$gnmdp5">
+                                                                                                        <field name="DROP">loc</field>
+                                                                                                        <value name="d0">
+                                                                                                          <block type="variables_get" id="j6)g@KK7]y2Z_WyN=(X+">
+                                                                                                            <field name="VAR" id="kp4rxqgp$m*`,C[so0O}">df</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="d1">
+                                                                                                          <shadow type="indata" id="^?xUhrjOCl1Ssd!s5^-(">
+                                                                                                            <field name="indata1">:, 'high temp'</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="text2">
+                                                                                                      <shadow type="indata" id="rSj4I//0tNAuI32ERRSb">
+                                                                                                        <field name="indata1"> : </field>
+                                                                                                      </shadow>
+                                                                                                    </value>
+                                                                                                    <next>
+                                                                                                      <block type="csvdataframe_J" id="DQ]k3Et.1/pwz{QYs_3]">
+                                                                                                        <value name="input_var">
+                                                                                                          <block type="variables_get" id="a[dv?Y8=yB,5ZqyGy1CU">
+                                                                                                            <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="csv">
+                                                                                                          <shadow type="indata" id="mw%3}M_G?KUnN%ecoAS:">
+                                                                                                            <field name="indata1"></field>
+                                                                                                          </shadow>
+                                                                                                          <block type="numpy_reshape" id="=:#bHA7vo^*5}X-xo:2T">
+                                                                                                            <value name="numpy_reshape_val">
+                                                                                                              <block type="variables_get" id="j=i*W`yzM`S!.apdpjbo">
+                                                                                                                <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="numpy_reshape_struct">
+                                                                                                              <shadow type="indata" id="TG|A%+u!d?@Si^6t#doz">
+                                                                                                                <field name="indata1">21,365</field>
+                                                                                                              </shadow>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <next>
+                                                                                                          <block type="csvdataframe_J" id="rU8[e7:=6nafmn%niU!5">
+                                                                                                            <value name="input_var">
+                                                                                                              <block type="variables_get" id="9I7aZWve9Zx.{z1N=Bb0">
+                                                                                                                <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="csv">
+                                                                                                              <shadow type="indata">
+                                                                                                                <field name="indata1"></field>
+                                                                                                              </shadow>
+                                                                                                              <block type="numpy_reshape" id="lq0|2(:CoCcsX;F3vjo5">
+                                                                                                                <value name="numpy_reshape_val">
+                                                                                                                  <block type="variables_get" id="Kr~h2hlM.28v=k+a*#f3">
+                                                                                                                    <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <value name="numpy_reshape_struct">
+                                                                                                                  <shadow type="indata" id="1c^-4[JNYBS7(^[nN=y!">
+                                                                                                                    <field name="indata1">21,365</field>
+                                                                                                                  </shadow>
+                                                                                                                </value>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <next>
+                                                                                                              <block type="csvdataframe_J" id=".-09zGc(.}nzB?+[OBQ^">
+                                                                                                                <value name="input_var">
+                                                                                                                  <block type="variables_get" id="C(=8cUiDjtxa}4=:{mw~">
+                                                                                                                    <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <value name="csv">
+                                                                                                                  <shadow type="indata">
+                                                                                                                    <field name="indata1"></field>
+                                                                                                                  </shadow>
+                                                                                                                  <block type="numpy_reshape" id="MA/@ikW?H1SWro~Nvo@)">
+                                                                                                                    <value name="numpy_reshape_val">
+                                                                                                                      <block type="variables_get" id="v}wH#0zV40[eZtz;kS$U">
+                                                                                                                        <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
+                                                                                                                      </block>
+                                                                                                                    </value>
+                                                                                                                    <value name="numpy_reshape_struct">
+                                                                                                                      <shadow type="indata" id="Dc}IG*rC2z;*crLi}PxA">
+                                                                                                                        <field name="indata1">21,365</field>
+                                                                                                                      </shadow>
+                                                                                                                    </value>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <next>
+                                                                                                                  <block type="math_change" id="{r(S,%fuoGd0LF2vA,~}">
+                                                                                                                    <field name="VAR" id="ba%LM-Sg)]}NsULK5;FE">avg_temp_avg</field>
+                                                                                                                    <field name="NAME">=</field>
+                                                                                                                    <value name="DELTA">
+                                                                                                                      <shadow type="indata" id=";|jVo@#a*-9q}X8Q`f`6">
+                                                                                                                        <field name="indata1">3</field>
+                                                                                                                      </shadow>
+                                                                                                                      <block type="block_sum_min" id="r8=W.KM4LkqTQA.KC.Y=">
+                                                                                                                        <field name="DROP">mean</field>
+                                                                                                                        <value name="VAR">
+                                                                                                                          <block type="variables_get" id="H!8O*rf^lQ3NGG#xlyb}">
+                                                                                                                            <field name="VAR" id="}6_#`CtZ-vPrLBEH8U-e">avg_temp</field>
+                                                                                                                          </block>
+                                                                                                                        </value>
+                                                                                                                        <value name="INPUT">
+                                                                                                                          <shadow type="indata" id="Z|8-RY~0/68KSN[/M9DR">
+                                                                                                                            <field name="indata1"></field>
+                                                                                                                          </shadow>
+                                                                                                                        </value>
+                                                                                                                      </block>
+                                                                                                                    </value>
+                                                                                                                    <next>
+                                                                                                                      <block type="math_change" id="5?T()7YU;L=nJ3_3h|*}">
+                                                                                                                        <field name="VAR" id="kN!6zoSs;Wf6%wB2l1R.">low_temp_avg</field>
+                                                                                                                        <field name="NAME">=</field>
+                                                                                                                        <value name="DELTA">
+                                                                                                                          <shadow type="indata">
+                                                                                                                            <field name="indata1">3</field>
+                                                                                                                          </shadow>
+                                                                                                                          <block type="block_sum_min" id="z0=$v3|FzR`RViD^*Y*/">
+                                                                                                                            <field name="DROP">mean</field>
+                                                                                                                            <value name="VAR">
+                                                                                                                              <block type="variables_get" id="mF!x_6?u_!MNG]k,pn.?">
+                                                                                                                                <field name="VAR" id="yF0$/]05l,=`1]tCXy:u">low_temp</field>
+                                                                                                                              </block>
+                                                                                                                            </value>
+                                                                                                                            <value name="INPUT">
+                                                                                                                              <shadow type="indata" id="wG34OwP/.][1b5}i2*1t">
+                                                                                                                                <field name="indata1"></field>
+                                                                                                                              </shadow>
+                                                                                                                            </value>
+                                                                                                                          </block>
+                                                                                                                        </value>
+                                                                                                                        <next>
+                                                                                                                          <block type="math_change" id="sOtR*T[B#U1Sk)/wM|8o">
+                                                                                                                            <field name="VAR" id="i:2r~33+|G6|qs=~=R7s">high_temp_avg</field>
+                                                                                                                            <field name="NAME">=</field>
+                                                                                                                            <value name="DELTA">
+                                                                                                                              <shadow type="indata">
+                                                                                                                                <field name="indata1">3</field>
+                                                                                                                              </shadow>
+                                                                                                                              <block type="block_sum_min" id="N4xkr1Z,486kBJCDpJ}?">
+                                                                                                                                <field name="DROP">mean</field>
+                                                                                                                                <value name="VAR">
+                                                                                                                                  <block type="variables_get" id="x?s.fTJGdJ7WoCT6^d?l">
+                                                                                                                                    <field name="VAR" id="]r0i(w#nql/:GUDEHTZ1">high_temp</field>
+                                                                                                                                  </block>
+                                                                                                                                </value>
+                                                                                                                                <value name="INPUT">
+                                                                                                                                  <shadow type="indata" id="3_XGO9~BT#kIk]D$!$V%">
+                                                                                                                                    <field name="indata1"></field>
+                                                                                                                                  </shadow>
+                                                                                                                                </value>
+                                                                                                                              </block>
+                                                                                                                            </value>
+                                                                                                                            <next>
+                                                                                                                              <block type="matplotlib_main" id="(jwY2?G:Ny[w#^PnmL)*">
+                                                                                                                                <value name="matplotlib_main_cols">
+                                                                                                                                  <shadow type="math_number" id="yiM`I7`!qk$Kw(eXX`ZW">
+                                                                                                                                    <field name="NUM">1</field>
+                                                                                                                                  </shadow>
+                                                                                                                                </value>
+                                                                                                                                <value name="matplotlib_main_rows">
+                                                                                                                                  <shadow type="math_number" id="g*u;?Hg1Isn@|HJultwt">
+                                                                                                                                    <field name="NUM">1</field>
+                                                                                                                                  </shadow>
+                                                                                                                                </value>
+                                                                                                                                <next>
+                                                                                                                                  <block type="matplotlib_pre_graph" id="I-5?::},#.O*=@}Pv0!$">
+                                                                                                                                    <field name="matplotlib_graph_select">matplotlib_line</field>
+                                                                                                                                    <value name="matplotlib_pre_graph_location1">
+                                                                                                                                      <shadow type="math_number" id="VH~*=o5)5igLmp}_Pw$u">
+                                                                                                                                        <field name="NUM">0</field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_graph_location2">
+                                                                                                                                      <shadow type="math_number" id="lW_5Zqs07fs81d,OxSw,">
+                                                                                                                                        <field name="NUM">0</field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="xx">
+                                                                                                                                      <shadow type="indata" id="UyWSrqWtG/R~0c22Y%2O">
+                                                                                                                                        <field name="indata1">range(1,366)</field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="yy">
+                                                                                                                                      <shadow type="indata" id="-pf7sj[Vm/iqH5)0tWPY">
+                                                                                                                                        <field name="indata1">t,s2</field>
+                                                                                                                                      </shadow>
+                                                                                                                                      <block type="variables_get" id="H3K@jl;?Q@:dH.j{G6Mw">
+                                                                                                                                        <field name="VAR" id="ba%LM-Sg)]}NsULK5;FE">avg_temp_avg</field>
+                                                                                                                                      </block>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_graph_Title">
+                                                                                                                                      <shadow type="indata" id="^DiUfv2(Z$aqHeH3If.M">
+                                                                                                                                        <field name="indata1"></field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_graph_Xlable">
+                                                                                                                                      <shadow type="indata" id="x)(v~pk_Ku)#!,BN^Ia,">
+                                                                                                                                        <field name="indata1"></field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_graph_Ylable">
+                                                                                                                                      <shadow type="indata" id="M3uEbacE:=X@KjCaFf/$">
+                                                                                                                                        <field name="indata1"></field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_legend">
+                                                                                                                                      <shadow type="indata" id="Wbs?3n!l6Fnvw}lRb4se">
+                                                                                                                                        <field name="indata1">avg temp</field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <value name="matplotlib_pre_color">
+                                                                                                                                      <shadow type="indata" id="?Fsfs9[^9P{,,=GvG0MK">
+                                                                                                                                        <field name="indata1">'g'</field>
+                                                                                                                                      </shadow>
+                                                                                                                                    </value>
+                                                                                                                                    <next>
+                                                                                                                                      <block type="matplotlib_pre_graph" id=":o)Q;u)TnSH]?GLeH_S0">
+                                                                                                                                        <field name="matplotlib_graph_select">matplotlib_line</field>
+                                                                                                                                        <value name="matplotlib_pre_graph_location1">
+                                                                                                                                          <shadow type="math_number" id="wJMI0==bsiRj|;HARB[F">
+                                                                                                                                            <field name="NUM">0</field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_graph_location2">
+                                                                                                                                          <shadow type="math_number" id="Q4ya{OMt$dJq6#PPIfhl">
+                                                                                                                                            <field name="NUM">0</field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="xx">
+                                                                                                                                          <shadow type="indata" id="y,P%kv+Bt.kU7(Qe,tP.">
+                                                                                                                                            <field name="indata1">range(1,366)</field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="yy">
+                                                                                                                                          <shadow type="indata">
+                                                                                                                                            <field name="indata1">t,s2</field>
+                                                                                                                                          </shadow>
+                                                                                                                                          <block type="variables_get" id="C55[T`i~olLAGF1v#;Ny">
+                                                                                                                                            <field name="VAR" id="kN!6zoSs;Wf6%wB2l1R.">low_temp_avg</field>
+                                                                                                                                          </block>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_graph_Title">
+                                                                                                                                          <shadow type="indata" id="dgVq)?;sL?gPk*F,]{6/">
+                                                                                                                                            <field name="indata1"></field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_graph_Xlable">
+                                                                                                                                          <shadow type="indata" id=";!sH#3qS/9BeiJdE/VMA">
+                                                                                                                                            <field name="indata1"></field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_graph_Ylable">
+                                                                                                                                          <shadow type="indata" id="UzKPl91|XBe17vD=)3}R">
+                                                                                                                                            <field name="indata1"></field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_legend">
+                                                                                                                                          <shadow type="indata" id="IoufWNOA;6~a9EynB)dm">
+                                                                                                                                            <field name="indata1">low temp</field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <value name="matplotlib_pre_color">
+                                                                                                                                          <shadow type="indata" id="[s~,*GT~/(RXRwX4fWf(">
+                                                                                                                                            <field name="indata1">'b'</field>
+                                                                                                                                          </shadow>
+                                                                                                                                        </value>
+                                                                                                                                        <next>
+                                                                                                                                          <block type="matplotlib_pre_graph" id="[u/B|wF2WZ6J/6e}+Mw;">
+                                                                                                                                            <field name="matplotlib_graph_select">matplotlib_line</field>
+                                                                                                                                            <value name="matplotlib_pre_graph_location1">
+                                                                                                                                              <shadow type="math_number" id="w(d-zuNHvEFO{N;{KQ(;">
+                                                                                                                                                <field name="NUM">0</field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_graph_location2">
+                                                                                                                                              <shadow type="math_number" id="ksgv_cvW=0mZ8j[Q}=Lc">
+                                                                                                                                                <field name="NUM">0</field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="xx">
+                                                                                                                                              <shadow type="indata" id="+D_hI**.-kMslU0Yapht">
+                                                                                                                                                <field name="indata1">range(1,366)</field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="yy">
+                                                                                                                                              <shadow type="indata">
+                                                                                                                                                <field name="indata1">t,s2</field>
+                                                                                                                                              </shadow>
+                                                                                                                                              <block type="variables_get" id="C8|G-GspbY8Z%(oC}dY$">
+                                                                                                                                                <field name="VAR" id="i:2r~33+|G6|qs=~=R7s">high_temp_avg</field>
+                                                                                                                                              </block>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_graph_Title">
+                                                                                                                                              <shadow type="indata" id="%apmph_mOIFo%GCUMUif">
+                                                                                                                                                <field name="indata1"></field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_graph_Xlable">
+                                                                                                                                              <shadow type="indata" id="2zIQ6W1RC%!UA3)s43l4">
+                                                                                                                                                <field name="indata1"></field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_graph_Ylable">
+                                                                                                                                              <shadow type="indata" id="V1xdYWk1(VNXd=tC%#Ri">
+                                                                                                                                                <field name="indata1"></field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_legend">
+                                                                                                                                              <shadow type="indata" id="52bl4c0S|v}yYL%Lv/=o">
+                                                                                                                                                <field name="indata1">high temp</field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <value name="matplotlib_pre_color">
+                                                                                                                                              <shadow type="indata" id="AN.i{wHF`ii;0`PMZM7f">
+                                                                                                                                                <field name="indata1">'r'</field>
+                                                                                                                                              </shadow>
+                                                                                                                                            </value>
+                                                                                                                                            <next>
+                                                                                                                                              <block type="matplotlib_plt_show" id="`iI[;OKZ][1@SzmQM35:"></block>
+                                                                                                                                            </next>
+                                                                                                                                          </block>
+                                                                                                                                        </next>
+                                                                                                                                      </block>
+                                                                                                                                    </next>
+                                                                                                                                  </block>
+                                                                                                                                </next>
+                                                                                                                              </block>
+                                                                                                                            </next>
+                                                                                                                          </block>
+                                                                                                                        </next>
+                                                                                                                      </block>
+                                                                                                                    </next>
+                                                                                                                  </block>
+                                                                                                                </next>
+                                                                                                              </block>
+                                                                                                            </next>
+                                                                                                          </block>
+                                                                                                        </next>
+                                                                                                      </block>
+                                                                                                    </next>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </next>
+                                                                                          </block>
                                                                                         </next>
                                                                                       </block>
                                                                                     </next>
